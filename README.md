@@ -1,4 +1,4 @@
-# Comparing complexity of popular sorting algorithms
+# Comparing complexity of sorting algorithms
 
 ### bubble sort O(n^2)
 
