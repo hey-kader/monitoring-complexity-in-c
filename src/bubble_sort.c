@@ -2,19 +2,42 @@
 #include <stdio.h>
 #include <time.h>
 
+void print_list (int[], int);
+
 int main (void) {
 
 		clock_t start, stop;
 		double processing_time;
 
-		clock.start();
+		start = clock();
 
-		FILE* fp = fopen('list.csv', 'rb')
-		
+		// read in list of 10 arbitrary numbers in working directory
+		// called 'list.csv'
 
-		clock.stop();
+		int data[501];
+		FILE* fp = fopen("list.csv", "r+");
+		int c;
+		int i = 0;
 
-		processing_time = ( (double) (stop-start) / CLOCKS_PER_SEC )
-		
+		while ( (c = (fgetc(fp))) != EOF ) {
+
+				printf("%c\n", c);					
+				data[i++] = c;
+		}	
+
+		data[i] = '\0';
+		print_list(data, i);
+		stop = clock();
+		processing_time = ( (double) (stop-start) / CLOCKS_PER_SEC );
+		pclose(fp);
+		printf("processing time: %f", processing_time);
 		return 0;
+}
+
+void print_list (int list[], int length) {
+		printf("\n");
+		for ( int i = 0; i < length; i++) {
+				printf("%d ",list[i]);
+		}
+		printf("\n");
 }
